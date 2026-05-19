@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TechfixIT for those in need!">
+    
+    <title>TechFixIT | Lime Edition</title>
+    <style>
+        :root {
+            --primary: limegreen; /* Lime Green */
+            --dark-accent: #1a1a1a;
+            --bg: #f8fafc;
+            --text: #334155;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg: #0a0a0a;
+            --text: #f1f5f9;
+            --card-bg: #141414;
+            --border: #262626;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+            transition: background 0.3s ease;
+        }
+
+        nav {
+            background: var(--card-bg);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary); /* Lime Border */
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; }
+        .nav-controls { display: flex; align-items: center; gap: 20px; }
+        #theme-toggle { cursor: pointer; background: none; border: 1px solid var(--border); padding: 5px 10px; border-radius: 8px; color: var(--text); }
+
+        /* --- Carousel --- */
+        .market-section { padding: 40px 0; background: var(--bg); border-bottom: 1px solid var(--border); }
+        .carousel-viewport { overflow: hidden; position: relative; max-width: 1100px; margin: 0 auto; padding: 10px; }
+        .carousel-track { display: flex; gap: 20px; }
+        
+        .service-card {
+            min-width: calc(33.333% - 14px);
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--primary);
+        }
+        .service-card h2 { color: var(--primary); margin-bottom: 10px; font-size: 1.2rem; }
+        .service-card p { font-size: 0.9rem; opacity: 0.8; }
+
+        .carousel-controls { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+        .nav-btn { background: var(--primary); color: #000; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+
+        /* --- Hero --- */
+        .hero { 
+            background: linear-gradient(135deg, #000000, #1a1a1a); /* Dark background for lime contrast */
+            color: var(--primary); 
+            padding: 60px 20px; 
+            text-align: center; 
+            border-bottom: 1px solid var(--primary);
+        }
+        .search-container { max-width: 600px; margin: 20px auto 0; }
+        #searchInput { 
+            width: 100%; 
+            padding: 15px 25px; 
+            border-radius: 50px; 
+            border: 2px solid var(--primary); 
+            outline: none; 
+            background: var(--card-bg);
+            color: var(--text);
+        }
+
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        
+        .ticker-box { 
+            background: var(--card-bg); padding: 12px; border-radius: 8px; border: 1px solid var(--primary); 
+            margin-bottom: 30px; display: flex; justify-content: space-between; font-family: monospace; font-size: 0.8rem;
+            color: var(--primary);
+        }
+
+        .category-grid { display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
+        .category-filter { 
+            background: var(--card-bg); 
+            color: var(--text); 
+            padding: 10px 20px; 
+            border-radius: 8px; 
+            border: 1px solid var(--border); 
+            cursor: pointer; 
+        }
+        .category-filter:hover { border-color: var(--primary); color: var(--primary); }
+
+        #results-area { display: grid; gap: 15px; }
+        .card { background: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border); transition: 0.2s; }
+        .card:hover { border-color: var(--primary); }
+        .card h3 { color: var(--primary); margin-bottom: 5px; }
+        .card small { color: var(--primary); opacity: 0.7; text-transform: uppercase; font-size: 0.7rem; }
+
+        footer { text-align: center; padding: 60px; color: #666; font-size: 0.8rem; border-top: 1px solid var(--border); }
+
+        @media (max-width: 900px) { .service-card { min-width: calc(50% - 10px); } }
+        @media (max-width: 600px) { .service-card { min-width: 100%; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">TechFixIT_</a>
+        <div class="nav-controls">
+            <a href="about.html" style="text-decoration:none; color:var(--text); font-size: 0.9rem;">ABOUT</a>
+            <button id="theme-toggle">🌓</button>
+        </div>
+    </nav>
+
+    <section class="market-section">
+        <div class="carousel-viewport">
+            <div class="carousel-track" id="carouselTrack"></div>
+        </div>
+        <div class="carousel-controls">
+            <button class="nav-btn" id="prevBtn">PREV</button>
+            <button class="nav-btn" id="nextBtn">NEXT</button>
+        </div>
+    </section>
+
+    <header class="hero">
+        <h1>ROOT@TECHFIXIT: ~$ SEARCH_</h1>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Query hardware or software fixes...">
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="ticker-box">
+            <span>SYSTEM_METRIC // HARDWARE_VALUE</span>
+            <span id="ram-price">CALCULATING...</span>
+        </div>
+
+        <div class="category-grid">
+            <button class="category-filter" data-category="all">All</button>
+            <button class="category-filter" data-category="hardware">Hardware</button>
+            <button class="category-filter" data-category="network">Network</button>
+            <button class="category-filter" data-category="security">Security</button>
+        </div>
+
+        <div id="results-area"></div>
+    </main>
+
+    <footer>&copy; 2026 TechFixIT // LIME_V5.1</footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
