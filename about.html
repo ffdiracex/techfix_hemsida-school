@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | TechFixIT</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border: #f1f5f9;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0f172a;
+            --text: #f1f5f9;
+            --text-light: #94a3b8;
+            --border: #334155;
+        }
+
+        body {
+            font-family: -apple-system, system-ui, sans-serif;
+            color: var(--text);
+            background-color: var(--bg);
+            line-height: 1.7;
+            margin: 0;
+            transition: 0.3s ease;
+        }
+
+        nav { padding: 2rem 5%; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 800; color: var(--primary); text-decoration: none; }
+        .nav-controls { display: flex; gap: 20px; align-items: center; }
+        #theme-toggle { cursor: pointer; background: none; border: 1px solid var(--border); padding: 5px 10px; border-radius: 8px; }
+
+        .content-wrapper { max-width: 650px; margin: 60px auto; padding: 0 25px; }
+        h1 { font-size: 2.2rem; margin-bottom: 1.5rem; letter-spacing: -1px; }
+        p { margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--text-light); }
+        hr { border: 0; border-top: 1px solid var(--border); margin: 3rem 0; }
+
+        .meta-info { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .meta-item h4 { font-size: 0.7rem; text-transform: uppercase; color: var(--text); margin-bottom: 5px; }
+
+        footer { text-align: center; padding: 40px; font-size: 0.8rem; color: #94a3b8; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">TechFixIT</a>
+        <div class="nav-controls">
+            <a href="index.html" style="text-decoration:none; color:var(--text-light)">← Back</a>
+            <button id="theme-toggle">🌓</button>
+        </div>
+    </nav>
+
+    <main class="content-wrapper">
+        <h1>Better help for humans.</h1>
+        <p>TechFixIT was built to prove that technical troubleshooting doesn't have to be intimidating.</p>
+        <p>We use a state-driven reactive engine to serve documentation instantly, ensuring you spend less time searching and more time fixing.</p>
+        <hr>
+        <div class="meta-info">
+            <div class="meta-item">
+                <h4>System Status</h4>
+                <p>Fully Operational</p>
+            </div>
+            <div class="meta-item">
+                <h4>Architecture</h4>
+                <p>Vanilla JS / State-Driven</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>&copy; 2026 TechFixIT</footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
